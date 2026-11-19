@@ -24,3 +24,17 @@ function stop(){drawing=false;ctx.closePath()}canvas.addEventListener('pointerup
 function restore(stack,other){if(!stack.length)return;other.push(canvas.toDataURL());let im=new Image();im.onload=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(im,0,0,canvas.width/devicePixelRatio,canvas.height/devicePixelRatio)};im.src=stack.pop()}
 $('#undo').onclick=()=>restore(history,redoStack);$('#redo').onclick=()=>restore(redoStack,history);$('#erase').onclick=()=>{erasing=!erasing;$('#erase').classList.toggle('active',erasing)};$('#clear').onclick=()=>{snapshot();ctx.clearRect(0,0,canvas.width,canvas.height)};$('#export').onclick=()=>{let a=document.createElement('a');a.download='devi-together-canvas.png';a.href=canvas.toDataURL('image/png');a.click()};
 $('#mobileMenu').onclick=()=>go('home');
+
+// Subtle pointer-driven 3D parallax for the hero scene (desktop only).
+const heroScene=document.querySelector('[data-tilt]');
+if(heroScene&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&window.matchMedia('(pointer:fine)').matches){
+  heroScene.addEventListener('pointermove',e=>{
+    const r=heroScene.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    heroScene.style.transform=`rotateX(${-y*9}deg) rotateY(${x*11}deg) scale(1.015)`;
+    heroScene.style.setProperty('--pointer-x',`${x*18}px`);
+    heroScene.style.setProperty('--pointer-y',`${y*18}px`);
+  });
+  heroScene.addEventListener('pointerleave',()=>{heroScene.style.transform='';heroScene.style.setProperty('--pointer-x','0px');heroScene.style.setProperty('--pointer-y','0px')});
+}
