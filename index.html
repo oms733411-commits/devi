@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f1e9"><meta name="description" content="A little world of ours — made with love for Devi.">
+<title>For My Devi ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+<a class="brand" href="#home"><span class="brand-mark">d.</span><span><b>for my devi</b><small>a little world of ours</small></span></a>
+<div class="side-label">OUR LITTLE SPACE</div>
+<nav id="sideNav" aria-label="Main navigation">
+<a class="nav-link active" href="#home" data-page="home"><span>⌂</span> Home</a>
+<a class="nav-link" href="#her-world" data-page="her-world"><span>✿</span> Her world</a>
+<a class="nav-link" href="#repair" data-page="repair"><span>♡</span> A softer place</a>
+<a class="nav-link" href="#canvas" data-page="canvas"><span>✎</span> Together canvas</a>
+<a class="nav-link" href="#notes" data-page="notes"><span>✉</span> Love notes</a>
+<a class="nav-link" href="#memories" data-page="memories"><span>⌁</span> Little memories</a>
+<a class="nav-link" href="#future" data-page="future"><span>☾</span> Our someday</a>
+</nav>
+<div class="sidebar-bottom"><span class="tiny-heart">♥</span><p>Not a perfect story.<br>A real one, written gently.</p><small>MADE WITH LOVE · ALWAYS</small></div>
+</aside>
+<main class="main">
+<header class="topbar"><span class="eyebrow">A PLACE THAT FEELS LIKE A HUG</span><button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button><span class="top-heart">♡</span></header>
+<section class="page active" id="page-home" data-title="Home">
+<div class="hero-grid"><div class="hero-copy"><span class="pill"><i></i> JUST FOR YOU, DEVI</span><h1>In a world full<br>of noise, <em>be you.</em></h1><p class="hero-sub">A tiny corner of the internet where you can breathe, smile, leave a thought, or just feel a little loved.</p><button class="primary" data-go="her-world">Come in, lokkhi <span>↗</span></button><div class="handwritten">you are allowed to take your time <b>♡</b></div></div><div class="hero-art"><div class="sun"></div><div class="flower f1">✿</div><div class="flower f2">✿</div><div class="flower f3">✽</div><div class="art-note"><span>dear devi,</span><strong>you make<br>ordinary days<br>feel softer.</strong><small>— always yours</small></div><div class="orbit orbit1"></div><div class="orbit orbit2"></div></div></div>
+<div class="section-heading"><div><span class="eyebrow">A FEW LITTLE DOORS</span><h2>Where shall we go?</h2></div><span class="heading-doodle">✳</span></div>
+<div class="door-grid">
+<button class="door blush" data-go="her-world"><span class="door-icon">✿</span><b>Your little world</b><small>Tell me how today feels.</small><span class="door-arrow">↗</span></button>
+<button class="door lilac" data-go="notes"><span class="door-icon">✉</span><b>Words to keep</b><small>Letters for your pocket.</small><span class="door-arrow">↗</span></button>
+<button class="door sage" data-go="memories"><span class="door-icon">⌁</span><b>Our tiny memories</b><small>The moments worth keeping.</small><span class="door-arrow">↗</span></button>
+<button class="door sand" data-go="future"><span class="door-icon">☾</span><b>Someday, somewhere</b><small>Little dreams we're growing.</small><span class="door-arrow">↗</span></button>
+</div>
+<div class="quote-strip"><span>“</span><p>Even on the days you don't feel like your brightest self, you are still someone worth being gentle with.</p><span>♡</span></div>
+</section>
+<section class="page" id="page-her-world"><div class="page-intro"><span class="eyebrow">01 / HER WORLD</span><h1>Your feelings<br><em>have room here.</em></h1><p>No need to explain everything perfectly. Pick what feels closest today.</p></div>
+<div class="panel"><h3>How is your heart today?</h3><div class="mood-grid" id="moods"><button data-mood="Soft" aria-label="Soft">☁️<small>soft</small></button><button data-mood="Happy" aria-label="Happy">☀️<small>happy</small></button><button data-mood="Tired" aria-label="Tired">🌙<small>tired</small></button><button data-mood="Anxious" aria-label="Anxious">🫧<small>anxious</small></button><button data-mood="Low" aria-label="Low">🌧️<small>a little low</small></button><button data-mood="Proud" aria-label="Proud">🌷<small>proud</small></button></div><label for="moodNote">Anything you'd like to leave here?</label><textarea id="moodNote" placeholder="A thought, a feeling, or absolutely nothing…"></textarea><button class="primary" id="saveMood">Save this moment <span>♡</span></button><p class="saved-msg" id="moodSaved" aria-live="polite"></p></div>
+<div class="soft-card"><span>♡</span><div><b>A small reminder</b><p>You don't have to earn rest. You don't have to be productive to deserve care. One thing at a time, okay?</p></div></div></section>
+<section class="page" id="page-repair"><div class="page-intro"><span class="eyebrow">02 / A SOFTER PLACE</span><h1>We can learn<br><em>to love better.</em></h1><p>This isn't a place to win an argument. It's a place to listen, take responsibility, and try again with care.</p></div>
+<div class="two-panels"><div class="panel"><span class="eyebrow">PAUSE & REFLECT</span><h3>What do you need right now?</h3><textarea id="repairNeed" placeholder="To be heard? A little space? Reassurance?"></textarea><label for="repairPromise">One gentle thing I can do differently</label><textarea id="repairPromise" placeholder="I can try to…"></textarea><button class="primary" id="saveRepair">Keep this promise <span>♡</span></button><p class="saved-msg" id="repairSaved"></p></div><div class="panel promise-panel"><span class="big-quote">“</span><h3>Same team.<br>Even when it's hard.</h3><p>We can disagree without becoming enemies. We can ask instead of assume. We can make room for studies, rest, friends, and each other.</p><div class="signature">with patience, always ♡</div></div></div></section>
+<section class="page" id="page-canvas"><div class="page-intro"><span class="eyebrow">03 / TOGETHER CANVAS</span><h1>Leave a little<br><em>piece of you.</em></h1><p>Doodle, write, make a mess. This canvas is yours.</p></div><div class="panel canvas-panel"><div class="canvas-tools"><label>Ink <input type="color" id="ink" value="#8f5364"></label><label>Size <input type="range" id="brush" min="1" max="24" value="5"></label><button class="tool" id="undo">↶ Undo</button><button class="tool" id="redo">↷ Redo</button><button class="tool" id="erase">Eraser</button><button class="tool" id="clear">Clear</button><button class="tool export" id="export">Save PNG ↓</button></div><canvas id="drawing" aria-label="Drawing canvas"></canvas><small class="canvas-hint">Touch or click and drag to draw. Your canvas stays on this device.</small></div></section>
+<section class="page" id="page-notes"><div class="page-intro"><span class="eyebrow">04 / LOVE NOTES</span><h1>Little words,<br><em>kept close.</em></h1><p>Save a note for a day when you need to hear it again.</p></div><div class="two-panels"><div class="panel"><h3>Write a note</h3><input id="noteTitle" placeholder="A tiny title…"><textarea id="noteBody" placeholder="Hey you, just wanted to say…"></textarea><button class="primary" id="addNote">Fold this note ♡</button></div><div class="note-stack" id="noteList"><div class="empty-state">Your little letters will live here. ♡</div></div></div></section>
+<section class="page" id="page-memories"><div class="page-intro"><span class="eyebrow">05 / LITTLE MEMORIES</span><h1>Moments that<br><em>stay with us.</em></h1><p>Big milestones, silly calls, peaceful evenings — they all count.</p></div><div class="panel"><h3>Add a memory</h3><div class="inline-fields"><input id="memoryTitle" placeholder="What happened?"><input id="memoryDate" type="date"></div><textarea id="memoryBody" placeholder="Why do you want to remember it?"></textarea><button class="primary" id="addMemory">Keep this moment ♡</button></div><div class="memory-list" id="memoryList"></div></section>
+<section class="page" id="page-future"><div class="page-intro"><span class="eyebrow">06 / OUR SOMEDAY</span><h1>A life made of<br><em>little ordinary joys.</em></h1><p>Not a deadline. Not a pressure. Just dreams we can take one step towards.</p></div><div class="dream-grid"><article><span>🏡</span><h3>A quiet little home</h3><p>A cozy cottage in the hills, a cat and a dog, warm lights, and a place that feels like ours.</p></article><article><span>☕</span><h3>Slow mornings</h3><p>Waking up together, making tea, doing the small chores, stealing hugs in between.</p></article><article><span>🚗</span><h3>Long drives</h3><p>Window down, favourite songs, silly conversations, and nowhere urgent to be.</p></article><article><span>🌱</span><h3>Your big dreams</h3><p>Your studies, your research, your career. I hope you get to become everything you work for.</p></article></div><div class="quote-strip"><span>♡</span><p>Let's build a future that has room for both our dreams.</p><span>☾</span></div></section>
+<footer class="footer">made of little thoughts & a lot of love <span>♡</span></footer>
+</main></div>
+<div class="mobile-nav" id="mobileNav"><a href="#home" data-page="home">⌂</a><a href="#her-world" data-page="her-world">✿</a><a href="#notes" data-page="notes">✉</a><a href="#memories" data-page="memories">⌁</a><a href="#future" data-page="future">☾</a></div>
+<script src="app.js"></script>
+</body></html>
