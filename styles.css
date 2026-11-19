@@ -72,3 +72,67 @@ body{background:radial-gradient(ellipse at 12% 5%,#f1dedc 0,transparent 32%),rad
  .footer{padding-top:38px}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+
+/* ═══ DEVI 3D DREAMSCAPE — layered depth, glass & motion ═══ */
+:root{--rose:#a94f70;--ink:#34252f;--cream:#f7edf0;--line:#ead6df}
+body{background:radial-gradient(ellipse at 72% 12%,#f5dce9 0,transparent 34%),radial-gradient(ellipse at 8% 78%,#e7e2f6 0,transparent 31%),linear-gradient(135deg,#fbf4ef,#f6edf3 52%,#f0edf8);background-attachment:fixed}
+.shell{perspective:1600px}
+.sidebar{background:linear-gradient(160deg,#fffaf6d9,#f5e9f2b8);box-shadow:12px 0 45px #78536a0b}
+.brand-mark{transform:rotate(-9deg);box-shadow:0 12px 25px #a45f7030,inset 2px 2px 5px #fff}
+.nav-link{transition:transform .3s,background .3s,box-shadow .3s}
+.nav-link:hover{transform:translateX(5px) translateZ(12px)}
+.main{max-width:1400px}
+.hero-grid{perspective:1400px;min-height:530px}
+.hero-art{isolation:isolate;overflow:visible;transform-style:preserve-3d;perspective:1000px;border-radius:48% 52% 45% 55%;background:radial-gradient(ellipse at 50% 48%,#fff2f4 0 18%,transparent 18.5%),radial-gradient(ellipse at 48% 48%,#e9c5d4 0,#e7d0e3 43%,#d9d5ee 75%,#e8e3dc 100%);box-shadow:inset 18px 18px 45px #fff9,inset -22px -25px 55px #9b718a2a,0 35px 75px #79506e25;transition:transform .22s ease-out}
+.hero-art:before{content:"";position:absolute;inset:8%;border-radius:50%;background:conic-gradient(from 30deg,transparent,#fff9,transparent 28%,#fff8,transparent 65%);filter:blur(2px);transform:translateZ(12px);pointer-events:none}
+.hero-art:after{content:"";position:absolute;inset:-3%;border-radius:48% 52% 45% 55%;border:1px solid #fff9;box-shadow:0 0 0 9px #fff2,0 0 0 10px #fff5;transform:translateZ(-24px) rotate(8deg);pointer-events:none}
+.sun{transform:translateZ(-18px);filter:blur(.2px);box-shadow:0 0 65px #fff9,0 0 120px #f4cbdc88}
+.orbit{transform:translateZ(30px) rotateX(65deg) rotateZ(-25deg);border:1px solid #fffC;box-shadow:0 0 25px #fff8}
+.orbit2{transform:translateZ(12px) rotateX(68deg) rotateZ(35deg);border-color:#ffffffa8}
+.art-note{z-index:5;position:relative;transform:translateZ(85px) rotate(-6deg);border-radius:5px 18px 8px 18px;background:linear-gradient(145deg,#fffdf8f5,#fff4f0e8);border:1px solid #fff;box-shadow:0 35px 55px #68435c38,0 8px 14px #68435c1a,inset 0 1px 0 #fff;backdrop-filter:blur(15px);transition:transform .35s}
+.art-note:before{content:"";position:absolute;left:50%;top:-9px;width:65px;height:19px;transform:translateX(-50%) rotate(-3deg);background:#eac8d1b8;box-shadow:0 2px 7px #8b586022}
+.art-note strong{text-shadow:0 2px 0 #fff}
+.flower{transform:translateZ(70px);text-shadow:0 9px 12px #88516a30;animation:petalFloat 5s ease-in-out infinite}
+.f2{animation-delay:-1.8s}.f3{animation-delay:-3.1s}
+.crystal-orb{position:absolute;z-index:4;left:13%;top:18%;width:clamp(82px,11vw,132px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;transform:translateZ(115px) rotate(-15deg);background:radial-gradient(circle at 32% 25%,#ffffff 0 4%,#fff9 5% 12%,#f8d9e8b8 28%,#b98dbb99 68%,#8b719eaa 100%);border:1px solid #ffffffd9;box-shadow:inset -13px -15px 24px #795a9b55,inset 8px 8px 20px #fff,0 25px 40px #79507845,0 0 45px #fff8;backdrop-filter:blur(4px);animation:orbFloat 6s ease-in-out infinite}
+.crystal-orb:before,.crystal-orb:after{content:"";position:absolute;inset:12%;border-radius:50%;border:1px solid #ffffffa8;transform:rotateX(65deg) rotateZ(25deg)}
+.crystal-orb:after{inset:2%;transform:rotateY(65deg) rotateZ(-25deg);border-color:#ffffff80}
+.crystal-orb span{font:48px 'Cormorant Garamond';color:#fff;text-shadow:0 3px 18px #a04f79;transform:translateZ(20px)}
+.float-card{position:absolute;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid #ffffffd9;background:linear-gradient(145deg,#ffffffc9,#fff5f3a6);backdrop-filter:blur(18px);box-shadow:0 20px 35px #68435c2b,inset 0 1px 0 #fff;border-radius:13px;color:#946174;transform-style:preserve-3d}
+.float-card small{font-size:8px;letter-spacing:1.4px;text-transform:uppercase}
+.float-card b{font:600 29px 'Cormorant Garamond'}
+.float-card i{font-style:normal;color:#c28ba2}
+.card-one{width:105px;height:112px;right:8%;top:15%;transform:translateZ(105px) rotate(9deg);animation:cardDrift 7s ease-in-out infinite}
+.card-two{width:82px;height:86px;left:8%;bottom:12%;transform:translateZ(90px) rotate(-11deg);animation:cardDrift 6s ease-in-out -2s infinite}
+.card-two b{font-size:34px}
+@keyframes orbFloat{0%,100%{translate:0 0;rotate:-4deg}50%{translate:0 -15px;rotate:5deg}}
+@keyframes cardDrift{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes petalFloat{0%,100%{translate:0 0;rotate:0deg}50%{translate:0 -9px;rotate:8deg}}
+.door-grid{perspective:1000px}
+.door{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.door:hover{transform:translateY(-9px) rotateX(5deg) rotateY(-3deg) translateZ(18px);box-shadow:0 25px 38px #69465f24,inset 0 1px 0 #fff}
+.door-icon{transform:translateZ(22px);filter:drop-shadow(0 5px 5px #9d617533)}
+.door b,.door small{position:relative;z-index:1;transform:translateZ(12px)}
+.door:before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,#ffffff85,transparent 48%);pointer-events:none}
+.door:after{box-shadow:inset 0 0 18px #fff8;transform:translateZ(4px)}
+.panel{background:linear-gradient(145deg,#fffdfbf2,#fff7f9e8);box-shadow:0 22px 50px #76516b12,inset 0 1px 0 #fff;backdrop-filter:blur(15px)}
+.soft-card,.quote-strip{box-shadow:0 18px 38px #79556b12,inset 0 1px 0 #fff}
+.note-card,.memory-card,.dream-grid article{transform-style:preserve-3d;transition:transform .3s,box-shadow .3s}
+.note-card:hover,.memory-card:hover,.dream-grid article:hover{transform:translateY(-7px) rotateX(2deg) rotateY(-2deg);box-shadow:0 24px 40px #79556b20}
+.primary{background:linear-gradient(115deg,#9c526e,#795d91);box-shadow:0 12px 25px #8f59673d,inset 0 1px 0 #ffffff70}
+.primary:hover{background:linear-gradient(115deg,#84435e,#684b82);transform:translateY(-3px) scale(1.025);box-shadow:0 17px 30px #8f59674a}
+.top-heart{filter:drop-shadow(0 4px 7px #a45f7055);animation:heartPulse 2.8s ease-in-out infinite}
+@keyframes heartPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+@media(max-width:700px){
+ .hero-grid{perspective:900px}
+ .hero-art{height:310px;transform:none!important;overflow:hidden}
+ .crystal-orb{width:86px;left:7%;top:14%}
+ .crystal-orb span{font-size:34px}
+ .card-one{right:4%;top:13%;width:82px;height:90px}
+ .card-two{left:4%;bottom:8%;width:68px;height:72px}
+ .art-note{padding:27px 30px;transform:translateZ(65px) rotate(-5deg)}
+ .art-note strong{font-size:29px}
+ .door:hover{transform:translateY(-4px)}
+}
+@media(prefers-reduced-motion:reduce){.crystal-orb,.float-card,.flower,.top-heart{animation:none!important}}
