@@ -1,0 +1,26 @@
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const pages=['home','her-world','repair','canvas','notes','memories','future'];
+function go(page){pages.forEach(p=>$('#page-'+p)?.classList.toggle('active',p===page));$$('[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===page));history.replaceState(null,'','#'+page);if(page==='canvas')resizeCanvas();window.scrollTo({top:0,behavior:'smooth'});}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+$$('[data-page]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();go(a.dataset.page)}));
+if(location.hash&&pages.includes(location.hash.slice(1)))go(location.hash.slice(1));
+const get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem('devi-'+k))??d}catch{return d}},put=(k,v)=>localStorage.setItem('devi-'+k,JSON.stringify(v));
+let selectedMood='';$$('#moods button').forEach(b=>b.addEventListener('click',()=>{selectedMood=b.dataset.mood;$$('#moods button').forEach(x=>x.classList.toggle('selected',x===b))}));
+$('#saveMood').onclick=()=>{put('mood',{mood:selectedMood,note:$('#moodNote').value,date:new Date().toLocaleString()});$('#moodSaved').textContent='Saved gently on this device. ♡'};
+$('#saveRepair').onclick=()=>{put('repair',{need:$('#repairNeed').value,promise:$('#repairPromise').value,date:new Date().toLocaleDateString()});$('#repairSaved').textContent='A little promise, kept here. ♡'};
+let notes=get('notes');function renderNotes(){$('#noteList').innerHTML=notes.length?notes.map((n,i)=>'<article class="note-card"><button class="delete" data-delnote="'+i+'" aria-label="Delete note">×</button><h4>'+esc(n.title||'A little note')+'</h4><p>'+esc(n.body)+'</p><small>'+esc(n.date)+'</small></article>').join():'<div class="empty-state">Your little letters will live here. ♡</div>';$$('[data-delnote]').forEach(b=>b.onclick=()=>{notes.splice(+b.dataset.delnote,1);put('notes',notes);renderNotes()})}
+$('#addNote').onclick=()=>{let body=$('#noteBody').value.trim();if(!body)return;notes.unshift({title:$('#noteTitle').value.trim(),body,date:new Date().toLocaleDateString()});put('notes',notes);$('#noteTitle').value='';$('#noteBody').value='';renderNotes()};renderNotes();
+let memories=get('memories');function renderMemories(){$('#memoryList').innerHTML=memories.length?memories.map((m,i)=>'<article class="memory-card"><button class="delete" data-delmemory="'+i+'">×</button><h4>'+esc(m.title)+'</h4><p>'+esc(m.body)+'</p><small>'+esc(m.date)+'</small></article>').join():'<div class="empty-state">The little moments you save will appear here. ♡</div>';$$('[data-delmemory]').forEach(b=>b.onclick=()=>{memories.splice(+b.dataset.delmemory,1);put('memories',memories);renderMemories()})}
+$('#addMemory').onclick=()=>{let title=$('#memoryTitle').value.trim();if(!title)return;memories.unshift({title,body:$('#memoryBody').value,date:$('#memoryDate').value||new Date().toLocaleDateString()});put('memories',memories);$('#memoryTitle').value='';$('#memoryBody').value='';renderMemories()};renderMemories();
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const canvas=$('#drawing'),ctx=canvas.getContext('2d');let drawing=false,erasing=false,history=[],redoStack=[],last=null;
+function snapshot(){try{history.push(canvas.toDataURL());if(history.length>30)history.shift();redoStack=[]}catch{}}
+function resizeCanvas(){let w=canvas.clientWidth,h=canvas.clientHeight;if(canvas.width!==w*devicePixelRatio||canvas.height!==h*devicePixelRatio){let old=canvas.width?canvas.toDataURL():null;canvas.width=w*devicePixelRatio;canvas.height=h*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.lineCap='round';ctx.lineJoin='round';if(old){let im=new Image();im.onload=()=>ctx.drawImage(im,0,0,w,h);im.src=old}}}
+new ResizeObserver(()=>resizeCanvas()).observe(canvas);resizeCanvas();snapshot();
+function point(e){let r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+canvas.addEventListener('pointerdown',e=>{drawing=true;canvas.setPointerCapture(e.pointerId);last=point(e);snapshot();ctx.beginPath();ctx.moveTo(last.x,last.y)});
+canvas.addEventListener('pointermove',e=>{if(!drawing)return;let p=point(e);ctx.globalCompositeOperation=erasing?'destination-out':'source-over';ctx.strokeStyle=$('#ink').value;ctx.lineWidth=+$('#brush').value;ctx.lineTo(p.x,p.y);ctx.stroke();last=p});
+function stop(){drawing=false;ctx.closePath()}canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+function restore(stack,other){if(!stack.length)return;other.push(canvas.toDataURL());let im=new Image();im.onload=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(im,0,0,canvas.width/devicePixelRatio,canvas.height/devicePixelRatio)};im.src=stack.pop()}
+$('#undo').onclick=()=>restore(history,redoStack);$('#redo').onclick=()=>restore(redoStack,history);$('#erase').onclick=()=>{erasing=!erasing;$('#erase').classList.toggle('active',erasing)};$('#clear').onclick=()=>{snapshot();ctx.clearRect(0,0,canvas.width,canvas.height)};$('#export').onclick=()=>{let a=document.createElement('a');a.download='devi-together-canvas.png';a.href=canvas.toDataURL('image/png');a.click()};
+$('#mobileMenu').onclick=()=>go('home');
